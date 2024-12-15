@@ -155,7 +155,7 @@ def xdl_format_error(question, answer):
         return 1
     return -1
 
-def format_reward(task, question, answer):
+def format_check(task, question, answer):
     """
     This function checks the format of the answer against predefined rules for each task.
 

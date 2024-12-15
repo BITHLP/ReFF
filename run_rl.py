@@ -19,7 +19,7 @@ from transformers import AutoTokenizer
 from datasets import load_dataset
 from peft import LoraConfig
 from trl import AutoModelForCausalLMWithValueHead, PPOConfig, PPOTrainer
-from format_reward import format_reward
+from format_check import format_check
 
 def get_custom_dataset(path, tokenizer, thres):
     """
@@ -114,7 +114,7 @@ if __name__ == '__main__':
                 t = batch['task'][i]
                 q = batch[t+'_question'][i]
                 a = batch['response'][i]
-                rewards.append(format_reward(t, q, a))
+                rewards.append(format_check(t, q, a))
             rewards = [torch.tensor(x, dtype=torch.float) for x in rewards]
 
             stats = ppo_trainer.step(query_pts, response_pts, rewards)
