@@ -10,6 +10,6 @@ The source code and data for AAAI 2025 accepted paper [ReFF: Reinforcing Format 
 
 - [Generation]()
 
-- [Fine-Tuning](run_ft.py):
+- [Fine-Tuning](run_ft.py): Fine-tuning the LLM using labeled data.
 
-- [ReFF](run_rl.py):
+- [ReFF](run_rl.py): Reinforcing format faithfulness without compromising general quality.

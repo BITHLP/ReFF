@@ -3,7 +3,7 @@ from utils import verify
 from datetime import datetime
 from isoduration import parse_duration
 
-def acrop_format_error(question, answer):
+def acrow_format_error(question, answer):
     word = question
     poem = answer
     if isinstance(poem, str):
@@ -16,7 +16,7 @@ def acrop_format_error(question, answer):
         return 1
     return -1
 
-def conll_format_error(question, answer):
+def ner_format_error(question, answer):
     src = ' '.join(question)
     sent = answer.strip()
     tags = [
@@ -42,7 +42,7 @@ def mtt_format_error(question, answer):
             return -1
     return 1
 
-def ptb_format_error(question, answer):
+def parse_format_error(question, answer):
     CLAUSE_LABELS = ['S', 'SBAR', 'SBARQ', 'SINV', 'SQ']
     PHRASE_LABELS = ['ADJP', 'ADVP', 'CONJP', 'FRAG', 'INTJ', 'LST', 'NAC', 'NP', 'NX', 'PP', 'PRN', 'PRT', 'QP', 'RRC', 'UCP', 'VP', 'WHADJP', 'WHADVP', 'WHNP', 'WHPP', 'X']
     WORD_LABELS = ['CC', 'CD', 'DT', 'EX', 'FW', 'IN', 'JJ', 'JJR', 'JJS', 'LS', 'MD', 'NN', 'NNS', 'NNP', 'NNPS', 'PDT', 'POS', 'PRP', 'PRP$', 'RB', 'RBR', 'RBS', 'RP', 'SYM', 'TO', 'UH', 'VB', 'VBD', 'VBG', 'VBN', 'VBP', 'VBZ', 'WDT', 'WP', 'WP$', 'WRB', '.', ',', '#', '$', ':', '-LRB-', '-RRB-', '``', "''", '-NONE-']
@@ -53,7 +53,6 @@ def ptb_format_error(question, answer):
         tree = Tree.fromstring(res.strip())
     except:
         return -1
-    errors = []
 
     if ''.join(tree.leaves()).replace(' ', '') != sentence.replace(' ', ''):
         return -1
@@ -75,13 +74,13 @@ def ptb_format_error(question, answer):
 
     return 1
 
-def squad_format_error(question, answer):
+def eqa_format_error(question, answer):
     context = question['context'].lower()
     if answer.lower() not in context:
         return -1
     return 1
 
-def subtitle_format_error(question, answer):
+def capgen_format_error(question, answer):
     sentence = question
     sentence = sentence.strip()
     res = answer.strip()
@@ -107,12 +106,11 @@ def ftime_format_error(question, answer):
     if not tgt:
         return -1
     if tag == 3:
-        # print(tgt)
         try:
             data = tgt.split("/")
-            repeat = data[0] #R-1
-            tgt = data[1] # YYYYMMDDTHHMMSS
-            duration = data[2] # P0Y0M0DT0H0M0S
+            repeat = data[0]  # R-1
+            tgt = data[1]  # YYYYMMDDTHHMMSS
+            duration = data[2]  # P0Y0M0DT0H0M0S
         except Exception as e:
             return -1
 
@@ -139,7 +137,7 @@ def ftime_format_error(question, answer):
                 return -1
     return 1
 
-def trec_format_error(question, answer):
+def mcq_format_error(question, answer):
     ALL_LABELS = ['ABBR:abb', 'ABBR:exp', 'ENTY:animal', 'ENTY:body', 'ENTY:color', 'ENTY:cremat', 'ENTY:currency', 'ENTY:dismed', 'ENTY:event', 'ENTY:food', 'ENTY:instru', 'ENTY:lang', 'ENTY:letter', 'ENTY:other', 'ENTY:plant', 'ENTY:product', 'ENTY:religion', 'ENTY:sport', 'ENTY:substance', 'ENTY:symbol', 'ENTY:techmeth', 'ENTY:termeq', 'ENTY:veh', 'ENTY:word', 'DESC:def', 'DESC:desc', 'DESC:manner', 'DESC:reason', 'HUM:gr', 'HUM:ind', 'HUM:title', 'HUM:desc', 'LOC:city', 'LOC:country', 'LOC:mount', 'LOC:other', 'LOC:state', 'NUM:code', 'NUM:count', 'NUM:date', 'NUM:dist', 'NUM:money', 'NUM:ord', 'NUM:other', 'NUM:period', 'NUM:perc', 'NUM:speed', 'NUM:temp', 'NUM:volsize', 'NUM:weight']
     if answer.strip() not in ALL_LABELS:
         return -1
@@ -161,43 +159,43 @@ def format_check(task, question, answer):
 
     Parameters:
     task (str): The name of the task. It should be one of the following:
-        'acrop', 'conll', 'mtt', 'ptb', 'squad', 'subtitle', 'ftime', 'trec', 'xdl-generation'
+        'acrow', 'ner', 'mtt', 'parse', 'eqa', 'capgen', 'ftime', 'mcq', 'xdl'
     question (str, list, or dict): The question related to the answer.
     answer (str): The answer to be evaluated.
 
     Returns:
     int: The reward value. It returns 1 if the answer is correct, and -1 otherwise.
     """
-    assert task in ['acrop', 'conll', 'mtt', 'ptb', 'squad', 'subtitle', 'ftime', 'trec', 'xdl-generation']
-    if task in ['trec', 'squad', 'conll', 'subtitle', 'mtt', 'ptb', 'ftime']:
+    assert task in ['acrow', 'ner', 'mtt', 'parse', 'eqa', 'capgen', 'ftime', 'mcq', 'xdl']
+    if task in ['mcq', 'eqa', 'ner', 'capgen', 'mtt', 'parse', 'ftime']:
         answer = answer.split('\n\n')[0]
         answer = answer.split('\n')[0]
-    elif task == 'acrop':
-        raise NotImplementedError()
-    elif task == 'xdl-generation':
+    elif task == 'acrow':
+        answer = answer.split('\n\n')[0]
+    elif task == 'xdl':
         if '</XDL>' not in answer:
             return -1
         answer = answer.split('</XDL>')[0] + '</XDL>'
     else:
         raise NotImplementedError()
 
-    if task == 'acrop':
-        return acrop_format_error(question, answer)
-    elif task == 'conll':
-        return conll_format_error(question, answer)
+    if task == 'acrow':
+        return acrow_format_error(question, answer)
+    elif task == 'ner':
+        return ner_format_error(question, answer)
     elif task == 'mtt':
         return mtt_format_error(question, answer)
-    elif task == 'ptb':
-        return ptb_format_error(question, answer)
-    elif task == 'squad':
-        return squad_format_error(question, answer)
-    elif task == 'subtitle':
-        return subtitle_format_error(question, answer)
+    elif task == 'parse':
+        return parse_format_error(question, answer)
+    elif task == 'eqa':
+        return eqa_format_error(question, answer)
+    elif task == 'capgen':
+        return capgen_format_error(question, answer)
     elif task == 'ftime':
         return ftime_format_error(question, answer)
-    elif task == 'trec':
-        return trec_format_error(question, answer)
-    elif task == 'xdl-generation':
+    elif task == 'mcq':
+        return mcq_format_error(question, answer)
+    elif task == 'xdl':
         return xdl_format_error(question, answer)
     else:
         raise NotImplementedError()
