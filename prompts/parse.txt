@@ -1,0 +1,92 @@
+### Instruction:
+Constituency parsing aims to extract a constituency-based parse tree from a sentence that represents its syntactic structure according to a phrase structure grammar. Please complete following constituency parsing tasks. The legal labels are:
+
+Clause Level
+S: simple declarative clause
+SBAR: clause introduced by a (possibly empty) subordinating conjunction
+SBARQ: direct question introduced by a wh-word or a wh-phrase
+SINV: inverted declarative sentence
+SQ: inverted yes/no question
+
+Phrase Level
+ADJP: adjective phrase
+ADVP: adverb phrase
+CONJP: conjunction phrase
+FRAG: fragment
+INTJ: interjection
+LST: list marker
+NAC: not a constituent
+NP: noun phrase
+NX: used within certain complex NPs to mark the head of the NP
+PP: prepositional phrase
+PRN: parenthetical
+PRT: particle
+QP: quantifier phrase
+RRC: reduced relative clause
+UCP: wnlike coordinated phrase
+VP: vereb phrase
+WHADJP: wh-adjective phrase
+WHADVP: wh-adverb phrase
+WHNP: wh-noun phrase
+WHPP: wh-prepositional phrase
+X: unknown, uncertain, or unbracketable
+
+Word Level
+CC: coordinating conjunction
+CD: cardinal number
+DT: determiner
+EX: existential there
+FW: foreign word
+IN: preposition, subordinating conjunction
+JJ: adjective
+JJR: adjective, comparative
+JJS: adjective, superlative
+LS: list marker
+MD: modal
+NN: noun, singular or mass
+NNS: noun plural
+NNP: proper noun, singular
+NNPS: proper noun, plural
+PDT: predeterminer
+POS: possessive ending
+PRP: personal pronoun
+PRP$: possessive pronoun
+RB: adverb
+RBR: adverb, comparative
+RBS: adverb, superlative
+RP: particle
+SYM: Symbol
+TO: infinitive 'to'
+UH: interjection
+VB: verb be, base form
+VBD: verb be, past tense
+VBG: verb be, gerund/present participle
+VBN: verb be, past participle
+VBP: verb be, sing. present, non-3d
+VBZ: verb be, 3rd person sing. present
+WDT: wh-determiner
+WP: wh-pronoun
+WP$: possessive wh-pronoun
+WRB: wh-abverb
+.: .
+,: ,
+#: #
+$: $
+:: punctuation
+-LRB-: opening brackets
+-RRB-: closing brackets
+``: opening quotation marks
+'': closing quotation marks
+-NONE-: words with no information
+
+### Example:
+Pierre Vinken , 61 years old , will join the board as a nonexecutive director Nov. 29 .
+
+Answer:
+(S (NP (NP (NNP Pierre) (NNP Vinken)) (, ,) (ADJP (NP (CD 61) (NNS years)) (JJ old)) (, ,)) (VP (MD will) (VP (VB join) (NP (DT the) (NN board)) (PP (IN as) (NP (DT a) (JJ nonexecutive) (NN director))) (NP (NNP Nov.) (CD 29)))) (. .))
+
+### Example:
+Mr. Vinken is chairman of Elsevier N.V. , the Dutch publishing group .
+
+Answer:
+(S (NP (NNP Mr.) (NNP Vinken)) (VP (VBZ is) (NP (NP (NN chairman)) (PP (IN of) (NP (NP (NNP Elsevier) (NNP N.V.)) (, ,) (NP (DT the) (NNP Dutch) (VBG publishing) (NN group)))))) (. .))

@@ -1,0 +1,14 @@
+### Instruction:
+Please transcribe the following sentences into video subtitles. To make your subtitles easy to read, stick to these guidelines: (1) When a subtitle is longer than 42 characters, break it into two lines, (2) Never use more than two lines per subtitle block, (3) Keep 'linguistic wholes' together when breaking lines. Insert '<eol>' and '<eob>' in your subtitles, where '<eol>' corresponds to a line break inside a subtitle block, and '<eob>' corresponds to a subtitle block break (the next subtitle comes on a different screen).
+
+### Example:
+It's August 5, 2010
+
+Answer:
+It's August 5, 2010. <eob>
+
+### Example:
+A massive collapse at the San José Copper Mine in Northern Chile has left 33 men trapped half a mile -- that's two Empire State Buildings -- below some of the hardest rock in the world.
+
+Answer:
+A massive collapse at the San José <eol> Copper Mine in Northern Chile <eob> has left 33 men trapped half a mile -- <eol> that's two Empire State Buildings -- <eob> below some of the hardest <eol> rock in the world. <eob>

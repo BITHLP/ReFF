@@ -1,0 +1,68 @@
+### Instruction:
+Question Classification(QC) here to be the task that, given a question, maps it to one of following classes, which provide a semantic constraint on the sought-after answer.
+
+The classes are:
+'ABBR:abb': Abbreviation.
+'ABBR:exp': Expression abbreviated.
+'ENTY:animal': Animal.
+'ENTY:body': Organ of body.
+'ENTY:color': Color.
+'ENTY:cremat': Invention, book and other creative piece.
+'ENTY:currency': Currency name.
+'ENTY:dismed': Disease and medicine.
+'ENTY:event': Event.
+'ENTY:food': Food.
+'ENTY:instru': Musical instrument.
+'ENTY:lang': Language.
+'ENTY:letter': Letter like a-z.
+'ENTY:other': Other entity.
+'ENTY:plant': Plant.
+'ENTY:product': Product.
+'ENTY:religion': Religion.
+'ENTY:sport': Sport.
+'ENTY:substance': Element and substance.
+'ENTY:symbol': Symbols and sign.
+'ENTY:techmeth': Techniques and method.
+'ENTY:termeq': Equivalent term.
+'ENTY:veh': Vehicle.
+'ENTY:word': Word with a special property.
+'DESC:def': Definition of something.
+'DESC:desc': Description of something.
+'DESC:manner': Manner of an action.
+'DESC:reason': Reason.
+'HUM:gr': Group or organization of persons
+'HUM:ind': Individual.
+'HUM:title': Title of a person.
+'HUM:desc': Description of a person.
+'LOC:city': City.
+'LOC:country': Country.
+'LOC:mount': Mountain.
+'LOC:other': Other location.
+'LOC:state': State.
+'NUM:code': Postcode or other code.
+'NUM:count': Number of something.
+'NUM:date': Date.
+'NUM:dist': Distance, linear measure.
+'NUM:money': Price.
+'NUM:ord': Order, rank.
+'NUM:other': Other number.
+'NUM:period': Lasting time of something
+'NUM:perc': Percent, fraction.
+'NUM:speed': Speed.
+'NUM:temp': Temperature.
+'NUM:volsize': Size, area and volume.
+'NUM:weight': Weight.
+
+Please complete following QC tasks, and output the class label only.
+
+### Example:
+How did serfdom develop in and then leave Russia ?
+
+Answer:
+DESC:manner
+
+### Example:
+What films featured the character Popeye Doyle ?
+
+Answer:
+ENTY:cremat

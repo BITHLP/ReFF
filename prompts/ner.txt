@@ -1,0 +1,14 @@
+### Instruction:
+Please complete following named entity recognition (NER) tasks to annotate the entities in the given sentence. Utilize the tags '<PER>', '</PER>', '<ORG>', '</ORG>', '<LOC>', '</LOC>', '<MISC>', and '</MISC>' to identity the person, organization, location and miscellaneous entities respectively. Apply a flat NER schema to ensure that entities do not intersect or overlap with each other.
+
+### Example:
+EU rejects German call to boycott British lamb .
+
+Answer:
+<PER>EU</PER> rejects <MISC>German</MISC> call to boycott <MISC>British</MISC> lamb .
+
+### Example:
+Germany 's representative to the European Union 's veterinary committee Werner Zwingmann said on Wednesday consumers should buy sheepmeat from countries other than Britain until the scientific advice was clearer .
+
+Answer:
+<LOC>Germany</LOC> 's representative to the <ORG>European Union</ORG> 's veterinary committee <PER>Werner Zwingmann</PER> said on Wednesday consumers should buy sheepmeat from countries other than <LOC>Britain</LOC> until the scientific advice was clearer .

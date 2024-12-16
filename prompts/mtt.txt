@@ -1,0 +1,20 @@
+### Instruction:
+Please translate the following German sentences into English, and strictly follow the terminology translation rules given therein.
+
+### Example:
+§ 8 (2) FOG über die Lage und Bedürfnisse von Forschung, Technologie und Innovation in Österreich und wurde im Auftrag der Bundesministerien für Wissenschaft, Forschung und Wirtschaft (BMWFW) und Verkehr, Innovation und Technologie (BMVIT) erarbeitet.
+
+Terminology Rules:
+{'§ von Wissenschaft': 'Federal Ministry of Science', 'BMWFW': 'BMWFW', 'BMVIT': 'BMVIT'}
+
+Answer:
+It was compiled by the Federal Ministry of Science, Research and Economy (BMWFW) and the Federal Ministry for Transport, Innovtion and Technology (BMVIT).
+
+### Example:
+Die Globalschätzung der F & E-Ausgaben für 2015
+
+Terminology Rules:
+{'Die Globalschätzung': 'Global estimate', 'Ausgaben': 'expenditure'}
+
+Answer:
+Global estimate of R & D expenditure in 2015

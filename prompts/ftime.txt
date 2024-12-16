@@ -1,0 +1,38 @@
+### Instruction:
+According to the provided reference time, tags, and natural language sentences, write out the corresponding time. The details of the labels and time format are as follows:
+
+Tag 1 indicates that the natural language sentence contains a time interval. It is necessary to add this time interval to the reference time to obtain the time when an event occurs. The corresponding time format is YYYYMMDDTHHMMSS, which includes the year, month, day, separator T, and time. For uncertain moments, you can use ? as a placeholder, but make sure the format is correct.
+
+Tag 2 indicates that the natural language sentence contains a specific date or time. For certain specified dates, the corresponding date and time need to be determined based on the reference time. The corresponding time format is YYYYMMDDTHHMMSS, which includes the year, month, day, separator T, and time. For uncertain moments, you can use ? as a placeholder, but it is still necessary to ensure the correct time format.
+
+Tag 3 indicates that the natural language sentence describes a recurring event. It is necessary to determine the number of repetitions, the time of the first occurrence triggered based on the reference event and natural language sentence, and the time interval or the cycle duration. The format is like Rn/YYYYMMDDTHHMMSS/PnYnMnDTnHnMnS, where Rn represents the number of cycles. If n is -1, it indicates infinite looping; if n is 0, it means triggering once without looping. YYYYMMDDTHHMMSS represents the time of the first occurrence of the event, including the year, month, day, separator T, and time. For uncertain times or moments, you can use ? as a placeholder, but it needs to ensure the correct format. PnYnMnDTnHnMnS represents the time interval of the recurring event, with the letter P indicating the duration, followed by the corresponding number of years, months, days, and the separator T, along with the corresponding hours, minutes, and seconds. The 'n' represents the quantity, and it's important to note the initial P, separator T, and not omitting '0' when n is 0. Additionally, use / to separate the number of repetitions, start time, and time interval.
+
+In addition, here are some correspondences between natural language expressions and time: breakfast time is 8 a.m., lunch and "at noon" represent noon at 12, and dinner is at 7 p.m.
+
+### Example:
+Tag: 1
+Reference time: 20121215T123900:Saturday
+Natural language sentence: Please remind me to go to shool in half an hour.
+Answer:
+20121215T130900
+
+### Example:
+Tag: 2
+Reference time: 20121121T013400:Wednesday
+Natural language sentence: Notify me at 8 a.m. tomorrow to go to yoga class.
+Answer:
+20121122T080000
+
+### Example:
+Tag: 3
+Reference time: 20121215T023900:Saturday
+Natural language sentence: I need to walk my dog every morning at 10 a.m. so please remind me.
+Answer:
+R-1/20121215T100000/P0Y0M1DT0H0M0S
+
+### Example:
+Tag: 3
+Reference time: 20130221T222500:Thursday
+Natural language sentence: I opened a VIP account at Lisa's gym today. Remind me to go to the gym everyday as long as my account is still valid, which will be from next week to 9 weeks after, totally last for 8 weeks.
+Answer:
+R55/20130225T??????/P0Y0M1DT0H0M0S

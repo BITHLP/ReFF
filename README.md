@@ -8,8 +8,9 @@ The source code and data for AAAI 2025 accepted paper [ReFF: Reinforcing Format 
 
 - [Format Checkers](format_check.py): Checking whether a LLM-generated response adheres to the format requirements of the corresponding task.
 
-- [Generation]()
+- [Generation](prompts): Reproducing the results with the same prompts.
 
-- [Fine-Tuning](run_ft.py): Fine-tuning the LLM using labeled data.
+- Adaptation: Improving format faithfulness of LLMs.
 
-- [ReFF](run_rl.py): Reinforcing format faithfulness without compromising general quality.
+    - [Fine-Tuning](run_ft.py): Fine-tuning the LLM using labeled data.
+    - [ReFF](run_rl.py): Reinforcing format faithfulness without compromising general quality.
